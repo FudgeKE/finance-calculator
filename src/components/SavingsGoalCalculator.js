@@ -3,13 +3,14 @@ import { Box, TextField, Button, Typography } from '@mui/material';
 
 const SavingsGoalCalculator = () => {
   const [goal, setGoal] = useState('');
-  const [currentSavings, setCurrentSavings] = useState('');
   const [monthlyContribution, setMonthlyContribution] = useState('');
-  const [months, setMonths] = useState(null);
+  const [rate, setRate] = useState('');
+  const [time, setTime] = useState(null);
 
-  const calculateSavingsGoal = () => {
-    const neededMonths = (goal - currentSavings) / monthlyContribution;
-    setMonths(neededMonths);
+  const calculateTime = () => {
+    const monthlyRate = rate / 100 / 12;
+    const calculatedTime = Math.log(1 + (goal * monthlyRate) / monthlyContribution) / Math.log(1 + monthlyRate);
+    setTime(calculatedTime);
   };
 
   return (
@@ -29,16 +30,6 @@ const SavingsGoalCalculator = () => {
       </Box>
       <Box sx={{ marginBottom: 2 }}>
         <TextField
-          label="Current Savings"
-          variant="outlined"
-          fullWidth
-          value={currentSavings}
-          onChange={(e) => setCurrentSavings(e.target.value)}
-          type="number"
-        />
-      </Box>
-      <Box sx={{ marginBottom: 2 }}>
-        <TextField
           label="Monthly Contribution"
           variant="outlined"
           fullWidth
@@ -47,12 +38,22 @@ const SavingsGoalCalculator = () => {
           type="number"
         />
       </Box>
-      <Button variant="contained" color="primary" onClick={calculateSavingsGoal}>
-        Calculate Months
+      <Box sx={{ marginBottom: 2 }}>
+        <TextField
+          label="Annual Interest Rate (%)"
+          variant="outlined"
+          fullWidth
+          value={rate}
+          onChange={(e) => setRate(e.target.value)}
+          type="number"
+        />
+      </Box>
+      <Button variant="contained" color="primary" onClick={calculateTime}>
+        Calculate Time
       </Button>
-      {months !== null && (
+      {time !== null && (
         <Typography variant="h6" gutterBottom>
-          Months to reach goal: {months}
+          Time to reach goal: {time} months
         </Typography>
       )}
     </Box>
