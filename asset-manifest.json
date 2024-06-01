@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/finance-calculator/static/css/main.e6c13ad2.css",
+    "main.js": "/finance-calculator/static/js/main.3193a97d.js",
+    "static/js/488.dc83ab03.chunk.js": "/finance-calculator/static/js/488.dc83ab03.chunk.js",
+    "index.html": "/finance-calculator/index.html",
+    "main.e6c13ad2.css.map": "/finance-calculator/static/css/main.e6c13ad2.css.map",
+    "main.3193a97d.js.map": "/finance-calculator/static/js/main.3193a97d.js.map",
+    "488.dc83ab03.chunk.js.map": "/finance-calculator/static/js/488.dc83ab03.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.3193a97d.js"
+  ]
+}
